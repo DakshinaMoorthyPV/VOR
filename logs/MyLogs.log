@@ -1,14 +1,12 @@
-[INFO ] 2023-09-18 12:42:30.988 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
-[INFO ] 2023-09-18 12:42:31.010 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage header properties
-[INFO ] 2023-09-18 12:42:31.354 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage cards properties
-[INFO ] 2023-09-18 12:42:34.682 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage footer properties
-[INFO ] 2023-09-18 12:42:43.847 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
-[INFO ] 2023-09-18 12:42:43.858 [main] Testing_the_feature_for_application_selection_page - User checks texts of applicationSelectionPage timeout session popup
-[INFO ] 2023-09-18 12:43:50.141 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
-[INFO ] 2023-09-18 12:43:50.173 [main] Testing_the_feature_for_login_mfa_page - User checks the texts of the loginMFA header properties
-[INFO ] 2023-09-18 12:43:50.513 [main] Testing_the_feature_for_login_mfa_page - User checks the texts of the loginMFA cards properties
-[INFO ] 2023-09-18 12:43:53.818 [main] Testing_the_feature_for_login_mfa_page - User checks the texts of the loginMFA footer properties
-[INFO ] 2023-09-18 12:45:18.142 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
-[INFO ] 2023-09-18 12:45:18.158 [main] Testing_the_feature_for_create_password_page - User checks the texts of the createPasswordPage header properties
-[INFO ] 2023-09-18 12:45:18.491 [main] Testing_the_feature_for_create_password_page - User checks the texts of the createPasswordPage cards properties
-[INFO ] 2023-09-18 12:45:21.855 [main] Testing_the_feature_for_create_password_page - User checks the texts of the createPasswordPage footer properties
+[INFO ] 2023-09-18 16:13:17.780 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
+[INFO ] 2023-09-18 16:13:17.796 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage header properties
+[INFO ] 2023-09-18 16:13:18.135 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage cards properties
+[INFO ] 2023-09-18 16:13:21.443 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage footer properties
+[INFO ] 2023-09-18 16:13:27.905 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
+[INFO ] 2023-09-18 16:13:27.914 [main] Testing_the_feature_for_application_selection_page - User checks texts of applicationSelectionPage timeout session popup
+[INFO ] 2023-09-18 16:14:16.857 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
+[INFO ] 2023-09-18 16:14:16.877 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage header properties
+[INFO ] 2023-09-18 16:14:17.225 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage cards properties
+[INFO ] 2023-09-18 16:14:20.571 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage footer properties
+[INFO ] 2023-09-18 16:14:28.269 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
+[INFO ] 2023-09-18 16:14:28.278 [main] Testing_the_feature_for_application_selection_page - User checks texts of applicationSelectionPage timeout session popup

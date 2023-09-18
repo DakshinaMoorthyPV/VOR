@@ -13,17 +13,11 @@ public class ApplicationSelectionPage {
 	@FindBy(xpath="//h1[contains(text(),'Your Applications')]")
 	private WebElement yourApplicationsHeader;
 	
-	@FindBy(xpath="//span[text()='Logout']")
-	private WebElement logoutHeader;
-	
 	@FindBy(xpath="//h2[text()='Your Applications']")
 	private WebElement yourApplicationsCards;
 	
 	@FindBy(xpath="//h2[contains(text(),'Contact us')]")
 	private WebElement contactUsCards;
-	
-	@FindBy(xpath="//h3[text()='View of Risk']")
-	private WebElement viewOfRiskCards;
 	
 	@FindBy(xpath="//span[text()='Contact details for Underwriters']")
 	private WebElement contactDetailsForUnderwritersCards;
@@ -32,10 +26,7 @@ public class ApplicationSelectionPage {
 	private WebElement beazleyFooter;
 	
 	@FindBy(xpath="//a[text()='Events']")
-	private WebElement eventsFooter;
-	
-	@FindBy(xpath="//a[@href='https://www.facebook.com/beazleyinsurance']")
-	private WebElement fbFooter; 
+	private WebElement eventsFooter; 
 	
 	@FindBy(xpath="//h2[text()='Session due to expire']")
 	private WebElement popupTimeOutSession;
