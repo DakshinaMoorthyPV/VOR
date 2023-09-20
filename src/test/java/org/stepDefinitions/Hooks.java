@@ -51,7 +51,7 @@ public class Hooks extends Base {
 	@Before(order=1)
 	public static void openApplication()
 	{
-		String url = prop.getProperty("beazleyApplicationSelectionPage_URL");
+		String url = prop.getProperty("beazleyResetPasswordPage_URL");
 		driver.get(url);
 	}
 	
