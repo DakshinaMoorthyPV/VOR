@@ -13,5 +13,5 @@ public interface IAutoConstant {
 	
 	String excelPath = "./data/data.xlsx";
 	String photoPath = "./ScreenShots/";
-	
+
 }

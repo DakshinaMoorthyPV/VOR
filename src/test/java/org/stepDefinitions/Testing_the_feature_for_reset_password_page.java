@@ -21,13 +21,10 @@ public class Testing_the_feature_for_reset_password_page extends Base{
 	public void user_checks_the_texts_of_the_header(String text)
 	{
 		logger.info("User checks the texts of the resetPasswordPage header properties");
-		resetPasswordPage.checkTheLengthOfTextInHeader();
 		Assert.assertEquals(resetPasswordPage.checkTheLengthOfTextInHeader(),14);
-		resetPasswordPage.checkTheDisplayOfIconInHeader();
 		Assert.assertEquals(resetPasswordPage.checkTheDisplayOfIconInHeader(),true);
 		Assert.assertEquals(resetPasswordPage.checkTheDisplayOfLinkInHeader(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
-		resetPasswordPage.checksCSSPropertiesInHeader();
 		Assert.assertEquals(resetPasswordPage.checksCSSPropertiesInHeader(),"62.9152px");
 		Assert.assertEquals(resetPasswordPage.checksCSSPropertiesInHeaderOthers(),"\"Tiempos Fine\", serif");
 		Assert.assertEquals(resetPasswordPage.checksCSSpropertiesInHeaderAnother(),"rgba(255, 255, 255, 1)");
@@ -40,7 +37,6 @@ public class Testing_the_feature_for_reset_password_page extends Base{
 		logger.info("User checks the texts of the resetPasswordPage cards properties");
 		FWUtils.scrollUptoParticularElement(driver,resetPasswordPage.getChangeYourPasswordForYourOnlineBeazleyAccountCards());
 		Assert.assertEquals(resetPasswordPage.checkTheLengthOfTextInCards(),52);
-		resetPasswordPage.checkTheDisplayOfImageInCards();
 		Assert.assertEquals(resetPasswordPage.checkTheDisplayOfImageInCards(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
 		Assert.assertEquals(resetPasswordPage.checksCSSPropertiesInCards(),"43.9006px");
@@ -55,7 +51,6 @@ public class Testing_the_feature_for_reset_password_page extends Base{
 		logger.info("User checks the texts of the resetPasswordPage footer properties");
 		FWUtils.scrollUptoParticularElement(driver,resetPasswordPage.getBackToTopFooter());
 		Assert.assertEquals(resetPasswordPage.checkTheLengthOfTextInFooter(),11);
-		resetPasswordPage.checkTheDisplayOfTextInFooter();
 		Assert.assertEquals(resetPasswordPage.checkTheDisplayOfTextInFooter(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
 		Assert.assertEquals(resetPasswordPage.checksCSSPropertiesInFooter(),"15.8754px");

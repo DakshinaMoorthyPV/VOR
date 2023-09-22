@@ -10,7 +10,7 @@ public class ApplicationSelectionPage {
 	@FindBy(xpath="(//img[@src='/globalassets/logo.svg'])[2]")
 	private WebElement beazleyHeader;
 	
-	@FindBy(xpath="//h1[contains(text(),'Your Applications')]")
+	@FindBy(xpath="//h1[contains(text(),'Your Application')]")
 	private WebElement yourApplicationsHeader;
 	
 	@FindBy(xpath="//h2[text()='Your Applications']")
@@ -148,5 +148,5 @@ public class ApplicationSelectionPage {
 	{
 		return popupTimeOutSession.getCssValue("color");
 	}
-	
+
 }

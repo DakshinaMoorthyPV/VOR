@@ -21,12 +21,9 @@ public class Testing_the_feature_for_create_password_page extends Base{
 	public void user_checks_the_texts_of_the_header(String text)
 	{
 		logger.info("User checks the texts of the createPasswordPage header properties");
-		createPasswordPage.checkTheLengthOfTextInHeader();
 		Assert.assertEquals(createPasswordPage.checkTheLengthOfTextInHeader(),15);
-		createPasswordPage.checkTheDisplayOfIconInHeader();
 		Assert.assertEquals(createPasswordPage.checkTheDisplayOfIconInHeader(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
-		createPasswordPage.checksCSSPropertiesInHeader();
 		Assert.assertEquals(createPasswordPage.checksCSSPropertiesInHeader(),"62.9152px");
 		Assert.assertEquals(createPasswordPage.checksCSSPropertiesInHeaderOthers(),"\"Tiempos Fine\", serif");
 		Assert.assertEquals(createPasswordPage.checksCSSpropertiesInHeaderAnother(),"rgba(255, 255, 255, 1)");
@@ -39,7 +36,6 @@ public class Testing_the_feature_for_create_password_page extends Base{
 		logger.info("User checks the texts of the createPasswordPage cards properties");
 		FWUtils.scrollUptoParticularElement(driver,createPasswordPage.getCurrentCustomersAndBrokersCards());
 		Assert.assertEquals(createPasswordPage.checkTheLengthOfTextInCards(),27);
-		createPasswordPage.checkTheDisplayOfTextInCards();
 		Assert.assertEquals(createPasswordPage.checkTheDisplayOfTextInCards(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
 		Assert.assertEquals(createPasswordPage.checksCSSPropertiesInCards(),"15.7508px");
@@ -54,7 +50,6 @@ public class Testing_the_feature_for_create_password_page extends Base{
 		logger.info("User checks the texts of the createPasswordPage footer properties");
 		FWUtils.scrollUptoParticularElement(driver,createPasswordPage.getBackToTopFooter());
 		Assert.assertEquals(createPasswordPage.checkTheLengthOfTextInFooter(),11);
-		createPasswordPage.checkTheDisplayOfTextInFooter();
 		Assert.assertEquals(createPasswordPage.checkTheDisplayOfTextInFooter(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
 		Assert.assertEquals(createPasswordPage.checksCSSPropertiesInFooter(),"15.8754px");

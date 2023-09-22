@@ -21,12 +21,9 @@ public class Testing_the_feature_for_login_mfa_page extends Base{
 	public void user_checks_the_texts_of_the_header(String text)
 	{
 		logger.info("User checks the texts of the loginMFA header properties");
-		loginMFAPage.checkTheLengthOfTextInHeader();
 		Assert.assertEquals(loginMFAPage.checkTheLengthOfTextInHeader(),5);
-		loginMFAPage.checkTheDisplayOfIconInHeader();
 		Assert.assertEquals(loginMFAPage.checkTheDisplayOfIconInHeader(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
-		loginMFAPage.checksCSSPropertiesInHeader();
 		Assert.assertEquals(loginMFAPage.checksCSSPropertiesInHeader(),"62.9152px");
 		Assert.assertEquals(loginMFAPage.checksCSSPropertiesInHeaderOthers(),"\"Tiempos Fine\", serif");
 		Assert.assertEquals(loginMFAPage.checksCSSpropertiesInHeaderAnother(),"rgba(255, 255, 255, 1)");
@@ -39,7 +36,6 @@ public class Testing_the_feature_for_login_mfa_page extends Base{
 		logger.info("User checks the texts of the loginMFA cards properties");
 		FWUtils.scrollUptoParticularElement(driver,loginMFAPage.getLoginToYourBeazleyDigitalAccountCards());
 		Assert.assertEquals(loginMFAPage.checkTheLengthOfTextInCards(),37);
-		loginMFAPage.checkTheDisplayOfTextInCards();
 		Assert.assertEquals(loginMFAPage.checkTheDisplayOfTextInCards(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
 		Assert.assertEquals(loginMFAPage.checksCSSPropertiesInCards(),"43.9006px");
@@ -54,7 +50,6 @@ public class Testing_the_feature_for_login_mfa_page extends Base{
 		logger.info("User checks the texts of the loginMFA footer properties");
 		FWUtils.scrollUptoParticularElement(driver,loginMFAPage.getCareersFooter());
 		Assert.assertEquals(loginMFAPage.checkTheLengthOfTextInFooter(),7);
-		loginMFAPage.checkTheDisplayOfIconInFooter();
 		Assert.assertEquals(loginMFAPage.checkTheDisplayOfIconInFooter(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
 		Assert.assertEquals(loginMFAPage.checksCSSPropertiesInFooter(),"15.8754px");

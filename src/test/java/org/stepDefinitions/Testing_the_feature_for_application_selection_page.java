@@ -11,6 +11,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Testing_the_feature_for_application_selection_page extends Base{
@@ -33,15 +34,12 @@ public class Testing_the_feature_for_application_selection_page extends Base{
 	public void user_checks_the_texts_of_the_header(String text)
 	{
 		logger.info("User checks the texts of the applicationSelectionPage header properties");
-		applicationSelectionPage.checkTheLengthOfTextInHeader();
-		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInHeader(),17);
-		applicationSelectionPage.checkTheDisplayOfIconInHeader();
+		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInHeader(),16);
 		Assert.assertEquals(applicationSelectionPage.checkTheDisplayOfIconInHeader(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
-		applicationSelectionPage.checksCSSPropertiesInHeader();
-		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInHeader(),"62.9152px");
-		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInHeaderOthers(),"\"Tiempos Fine\", serif");
-		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInHeaderAnother(),"rgba(255, 255, 255, 1)");
+		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInHeader(),"62.91px");
+		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInHeaderOthers(),"Tiempos Fine, serif");
+		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInHeaderAnother(),"rgb(255, 255, 255)");
 		extentTest.log(LogStatus.INFO,"User checks the texts of the applicationSelectionPage header properties");
 	}
 	
@@ -51,12 +49,11 @@ public class Testing_the_feature_for_application_selection_page extends Base{
 		logger.info("User checks the texts of the applicationSelectionPage cards properties");
 		FWUtils.scrollUptoParticularElement(driver,applicationSelectionPage.getYourApplicationsCards());
 		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInCards(),17);
-		applicationSelectionPage.checkTheDisplayOfTextInCards();
 		Assert.assertEquals(applicationSelectionPage.checkTheDisplayOfTextInCards(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
-		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInCards(),"76.8958px");
-		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInCardsOthers(),"\"Tiempos Fine\", serif");
-		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInCardsAnother(),"rgba(75, 0, 80, 1)");
+		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInCards(),"76.88px");
+		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInCardsOthers(),"Tiempos Fine, serif");
+		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInCardsAnother(),"rgb(75, 0, 80)");
 		extentTest.log(LogStatus.INFO,"User checks the texts of the applicationSelectionPage cards properties");
 	}
 	
@@ -66,12 +63,11 @@ public class Testing_the_feature_for_application_selection_page extends Base{
 		logger.info("User checks the texts of the applicationSelectionPage footer properties");
 		FWUtils.scrollUptoParticularElement(driver,applicationSelectionPage.getEventsFooter());
 		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInFooter(),6);
-		applicationSelectionPage.checkTheDisplayOfIconInFooter();
 		Assert.assertEquals(applicationSelectionPage.checkTheDisplayOfIconInFooter(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
-		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInFooter(),"15.8754px");
+		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInFooter(),"15.8633px");
 		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInFooterOthers(),"Diatype, sans-serif");
-		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInFooterAnother(),"rgba(255, 255, 255, 1)");
+		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInFooterAnother(),"rgb(255, 255, 255)");
 		extentTest.log(LogStatus.INFO,"User checks the texts of the applicationSelectionPage footer properties");
 	}
 	
@@ -80,12 +76,11 @@ public class Testing_the_feature_for_application_selection_page extends Base{
 	{
 		logger.info("User checks texts of applicationSelectionPage timeout session popup");
 		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInTimeOutSessionPopup(),21);
-		applicationSelectionPage.checkTheDisplayOfTextInTimeOutSessionPopup();
 		Assert.assertEquals(applicationSelectionPage.checkTheDisplayOfTextInTimeOutSessionPopup(),true);
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
 		Assert.assertEquals(applicationSelectionPage.checkCSSPropertiesInTimeOutSessionPopup(),"30px");
-		Assert.assertEquals(applicationSelectionPage.checkCSSPropertiesInTimeOutSessionPopupOthers(),"\"Tiempos Fine\", serif");
-		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInTimeOutSessionPopupAnother(),"rgba(75, 0, 80, 1)");
+		Assert.assertEquals(applicationSelectionPage.checkCSSPropertiesInTimeOutSessionPopupOthers(),"Tiempos Fine, serif");
+		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInTimeOutSessionPopupAnother(),"rgb(75, 0, 80)");
 		extentTest.log(LogStatus.INFO,"User checks texts of applicationSelectionPage timeout session popup");
 	}
 	

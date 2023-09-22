@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features= {"src/test/resources/beazleyResetPasswordPageFeatures/"},
+@CucumberOptions(features= {"src/test/resources/beazleyApplicationSelectionPageFeatures/"},
 glue={"org.stepDefinitions"}, tags= "@beazley", plugin = {"pretty", 
 		"html:target/Reports/cucumber.html",
 		"json:target/Reports/cucumber.json"
