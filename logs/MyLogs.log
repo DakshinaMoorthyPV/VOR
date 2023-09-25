@@ -1,6 +1,0 @@
-[INFO ] 2023-09-21 13:52:36.733 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
-[INFO ] 2023-09-21 13:52:36.751 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage header properties
-[INFO ] 2023-09-21 13:52:36.975 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage cards properties
-[INFO ] 2023-09-21 13:52:40.128 [main] Testing_the_feature_for_application_selection_page - User checks the texts of the applicationSelectionPage footer properties
-[INFO ] 2023-09-21 13:52:49.573 [main] Testing_the_feature_for_application_selection_page - Validating the title of the page
-[INFO ] 2023-09-21 13:52:49.573 [main] Testing_the_feature_for_application_selection_page - User checks texts of applicationSelectionPage timeout session popup

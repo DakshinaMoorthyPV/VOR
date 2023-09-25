@@ -1,5 +1,7 @@
 package org.stepDefinitions;
 
+import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.generics.Base;
@@ -11,7 +13,6 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Testing_the_feature_for_application_selection_page extends Base{
@@ -21,67 +22,99 @@ public class Testing_the_feature_for_application_selection_page extends Base{
 	public static int count = 0;
 	
 	@Given("User need to be on {string}")
-	public void user_need_to_be_on_Beazley_page(String expected) {
+	public void user_need_to_be_on_Beazley_page(String expected) throws InterruptedException, IOException {
 		count++;
 		extentTest = extentReports.startTest("Scenario-->"+count,"Invocation of test-->"+count);
-		logger.info("Validating the title of the page");
 		String actual = driver.getTitle();
 		Assert.assertEquals(actual,expected);
-		extentTest.log(LogStatus.INFO,"Validating the title of the page");
+		logger.info("Validated the title of the page");
+		extentTest.log(LogStatus.INFO,"Validated the title of the page",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 	}
 	
 	@When("User checks the texts of the applicationSelectionPage header {string}")
-	public void user_checks_the_texts_of_the_header(String text)
+	public void user_checks_the_texts_of_the_header(String text) throws InterruptedException, IOException
 	{
-		logger.info("User checks the texts of the applicationSelectionPage header properties");
 		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInHeader(),16);
+		logger.info("Validated the length of text in header");
+		extentTest.log(LogStatus.INFO,"Validated the length of text in header",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Assert.assertEquals(applicationSelectionPage.checkTheDisplayOfIconInHeader(),true);
+		logger.info("Validated the presence of icon in header");
+		extentTest.log(LogStatus.INFO,"Validated the presence of icon in header",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
+		logger.info("Checked the count of letters");
+		extentTest.log(LogStatus.INFO,"Checked the count of letters",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInHeader(),"62.91px");
 		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInHeaderOthers(),"Tiempos Fine, serif");
 		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInHeaderAnother(),"rgb(255, 255, 255)");
-		extentTest.log(LogStatus.INFO,"User checks the texts of the applicationSelectionPage header properties");
+		logger.info("Validated the CSS properties of header");
+		extentTest.log(LogStatus.INFO,"Validated the CSS properties of header",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		logger.info("Validated the Application Selection page header properties");
+		extentTest.log(LogStatus.INFO,"Validated the Application Selection page header properties",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 	}
 	
 	@When("User checks the texts of the applicationSelectionPage cards {string}")
-	public void user_checks_the_texts_of_the_cards(String text) throws InterruptedException
+	public void user_checks_the_texts_of_the_cards(String text) throws InterruptedException, IOException
 	{
-		logger.info("User checks the texts of the applicationSelectionPage cards properties");
 		FWUtils.scrollUptoParticularElement(driver,applicationSelectionPage.getYourApplicationsCards());
 		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInCards(),17);
+		logger.info("Validated the length of text in cards");
+		extentTest.log(LogStatus.INFO,"Validated the length of text in cards",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Assert.assertEquals(applicationSelectionPage.checkTheDisplayOfTextInCards(),true);
+		logger.info("Validated the presence of text in cards");
+		extentTest.log(LogStatus.INFO,"Validated the presence of text in cards",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
+		logger.info("Checked the count of letters");
+		extentTest.log(LogStatus.INFO,"Checked the count of letters",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInCards(),"76.88px");
 		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInCardsOthers(),"Tiempos Fine, serif");
 		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInCardsAnother(),"rgb(75, 0, 80)");
-		extentTest.log(LogStatus.INFO,"User checks the texts of the applicationSelectionPage cards properties");
+		logger.info("Validated the CSS properties of cards");
+		extentTest.log(LogStatus.INFO,"Validated the CSS properties of cards",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		logger.info("Validated the Application Selection page cards properties");
+		extentTest.log(LogStatus.INFO,"Validated the Application Selection page cards properties",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 	}
 	
 	@And("User checks the texts of the applicationSelectionPage footer {string}")
-	public void user_checks_the_texts_of_the_footer(String text) throws InterruptedException
+	public void user_checks_the_texts_of_the_footer(String text) throws InterruptedException, IOException
 	{
-		logger.info("User checks the texts of the applicationSelectionPage footer properties");
 		FWUtils.scrollUptoParticularElement(driver,applicationSelectionPage.getEventsFooter());
 		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInFooter(),6);
+		logger.info("Validated the length of text in footer");
+		extentTest.log(LogStatus.INFO,"Validated the length of text in footer",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Assert.assertEquals(applicationSelectionPage.checkTheDisplayOfIconInFooter(),true);
+		logger.info("Validated the presence of icon in footer");
+		extentTest.log(LogStatus.INFO,"Validated the presence of icon in footer",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
+		logger.info("Checked the count of letters");
+		extentTest.log(LogStatus.INFO,"Checked the count of letters",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInFooter(),"15.8633px");
 		Assert.assertEquals(applicationSelectionPage.checksCSSPropertiesInFooterOthers(),"Diatype, sans-serif");
 		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInFooterAnother(),"rgb(255, 255, 255)");
-		extentTest.log(LogStatus.INFO,"User checks the texts of the applicationSelectionPage footer properties");
+		logger.info("Validated the CSS properties of footer");
+		extentTest.log(LogStatus.INFO,"Validated the CSS properties of footer",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		logger.info("Validated the Application Selection page footer properties");
+		extentTest.log(LogStatus.INFO,"Validated the Application Selection page footer properties",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 	}
 	
 	@When("User checks texts of applicationSelectionPage timeout session popup {string}")
-	public void user_checks_texts_of_timeout_session_popup(String text) 
+	public void user_checks_texts_of_timeout_session_popup(String text) throws InterruptedException, IOException 
 	{
-		logger.info("User checks texts of applicationSelectionPage timeout session popup");
 		Assert.assertEquals(applicationSelectionPage.checkTheLengthOfTextInTimeOutSessionPopup(),21);
+		logger.info("Validated the length of text in timeout session popup");
+		extentTest.log(LogStatus.INFO,"Validated the length of text in timeout session popup",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Assert.assertEquals(applicationSelectionPage.checkTheDisplayOfTextInTimeOutSessionPopup(),true);
+		logger.info("Validated the presence of text in timeout session popup");
+		extentTest.log(LogStatus.INFO,"Validated the presence of text in timeout session popup",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
+		logger.info("Checked the count of letters");
+		extentTest.log(LogStatus.INFO,"Checked the count of letters",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Assert.assertEquals(applicationSelectionPage.checkCSSPropertiesInTimeOutSessionPopup(),"30px");
 		Assert.assertEquals(applicationSelectionPage.checkCSSPropertiesInTimeOutSessionPopupOthers(),"Tiempos Fine, serif");
 		Assert.assertEquals(applicationSelectionPage.checksCSSpropertiesInTimeOutSessionPopupAnother(),"rgb(75, 0, 80)");
-		extentTest.log(LogStatus.INFO,"User checks texts of applicationSelectionPage timeout session popup");
+		logger.info("Validated the CSS properties of timeout session popup");
+		extentTest.log(LogStatus.INFO,"Validated the CSS properties of timeout session popup",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		logger.info("Validated the timeout session popup properties");
+		extentTest.log(LogStatus.INFO,"Validated the timeout session popup properties",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 	}
 	
 }

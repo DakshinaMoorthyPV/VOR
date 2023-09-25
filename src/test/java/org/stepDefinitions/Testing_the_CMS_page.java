@@ -1,5 +1,7 @@
 package org.stepDefinitions;
 
+import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.generics.Base;
@@ -16,21 +18,28 @@ public class Testing_the_CMS_page extends Base{
 	private static Logger logger = LogManager.getLogger(Testing_the_CMS_page.class);
 	CMSPage cmsPage = new CMSPage(driver);
 
-	@When("User checks the texts of the cmspage header {string}")
-	public void user_checks_the_texts_of_the_cmspage_header(String text) throws InterruptedException
+	@When("User logins in the cmspage {string}")
+	public void user_checks_the_texts_of_the_cmspage_header(String text) throws InterruptedException, IOException
 	{
-		logger.info("User checks the texts of the cmspage header");
 		cmsPage.enterTextInBeazleyLogin("Nitin.kumar@beazley.com");
-		Thread.sleep(2000);
+		logger.info("Validated the username");
+		extentTest.log(LogStatus.INFO,"Validated the username",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		cmsPage.clickOnNext();
+		logger.info("Clicked on the next button");
+		extentTest.log(LogStatus.INFO,"Clicked on the next button",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Thread.sleep(3000);
-		cmsPage.enterTextInBeazleyPassword("Papajaan2129#");
+		cmsPage.enterTextInBeazleyPassword("");
+		logger.info("Validated the password");
+		extentTest.log(LogStatus.INFO,"Validated the password",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		cmsPage.signInButton();
-		Thread.sleep(3000);
+		logger.info("Clicked on sign in button");
+		extentTest.log(LogStatus.INFO,"Clicked on sign in button",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		//Thread.sleep(3000);
 		//Assert.assertEquals(cmsPage.getText(),17);
 		//Assert.assertEquals(cmsPage.isDisplayed(),true);
 		//FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
-		extentTest.log(LogStatus.INFO,"User checks the texts of the cmspage header");
+		logger.info("Validated the login of cmspage");
+		extentTest.log(LogStatus.INFO,"Validated the login of cmspage",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 	}
 	
 }

@@ -70,6 +70,8 @@ public class Hooks extends Base {
 		else if(scenario.getStatus()==Status.PASSED)
 		{
 			extentTest.log(LogStatus.PASS,"Test case passed is-->"+scenario.getName());
+			FWUtils.takesScreenShot(driver,scenario.getName());
+			extentTest.log(LogStatus.PASS,extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		}
 //		scenario.attach(FWUtils.getScreenShotByte(driver),"image/png",scenario.getName());
 //		extentTest.fail("details", MediaEntityBuilder.createScreenCaptureFromPath(FWUtils.takesScreenShot(driver)).build());
