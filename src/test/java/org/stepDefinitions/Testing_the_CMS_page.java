@@ -23,23 +23,23 @@ public class Testing_the_CMS_page extends Base{
 	{
 		cmsPage.enterTextInBeazleyLogin("Nitin.kumar@beazley.com");
 		logger.info("Validated the username");
-		extentTest.log(LogStatus.INFO,"Validated the username",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		extentTest.log(LogStatus.PASS,"Validated the username",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		cmsPage.clickOnNext();
 		logger.info("Clicked on the next button");
-		extentTest.log(LogStatus.INFO,"Clicked on the next button",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		extentTest.log(LogStatus.PASS,"Clicked on the next button",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		Thread.sleep(3000);
 		cmsPage.enterTextInBeazleyPassword("");
 		logger.info("Validated the password");
-		extentTest.log(LogStatus.INFO,"Validated the password",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		extentTest.log(LogStatus.PASS,"Validated the password",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		cmsPage.signInButton();
 		logger.info("Clicked on sign in button");
-		extentTest.log(LogStatus.INFO,"Clicked on sign in button",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		extentTest.log(LogStatus.PASS,"Clicked on sign in button",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		//Thread.sleep(3000);
 		//Assert.assertEquals(cmsPage.getText(),17);
 		//Assert.assertEquals(cmsPage.isDisplayed(),true);
 		//FWUtils.checksTheCountOfCapitalOrSmallLetters(text);
 		logger.info("Validated the login of cmspage");
-		extentTest.log(LogStatus.INFO,"Validated the login of cmspage",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
+		extentTest.log(LogStatus.PASS,"Validated the login of cmspage",extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 	}
 	
 }
