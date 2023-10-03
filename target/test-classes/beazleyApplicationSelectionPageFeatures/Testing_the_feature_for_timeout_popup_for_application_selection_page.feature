@@ -2,7 +2,7 @@ Feature: Testing the feature for validating timeout popup of Application Selecti
 
   @beazley
   Scenario Outline: Testing the feature for validating timeout popup of Application Selection page
-    Given User need to be on ""
+    Given User need to be on "" "Testing the feature for validating timeout popup of Application Selection page"
     When User checks texts of applicationSelectionPage timeout session popup "<heading>"
 
     Examples: 

@@ -16,7 +16,7 @@ Feature: Testing_the_feature_for_image_block
     
     @beazley  
     Scenario Outline: Testing_the_feature_for_image_block
-    Given User need to be on ""
+    Given User need to be on "" "Testing_the_feature_for_image_block"
     When I am at the ImageBlock page validate image display 
     
 

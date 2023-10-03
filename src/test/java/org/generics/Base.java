@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
+import io.cucumber.java.Scenario;
+
 
 
 public class Base implements IAutoConstant{
@@ -28,4 +30,5 @@ public class Base implements IAutoConstant{
 	public static Properties prop;
 	
 	public static FileInputStream fis;
+	
 }

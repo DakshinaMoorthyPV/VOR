@@ -2,7 +2,7 @@ Feature: Testing the feature for validating components of Application Selection 
 
   @beazley
   Scenario Outline: Testing the feature for validating components of Application Selection page
-    Given User need to be on ""
+    Given User need to be on "" "Testing the feature for validating components of Application Selection page"
     When User checks the texts of the applicationSelectionPage header "<heading>"
     When User checks the texts of the applicationSelectionPage cards "<oneMoreHeading>"
     And User checks the texts of the applicationSelectionPage footer "<footerText>"
