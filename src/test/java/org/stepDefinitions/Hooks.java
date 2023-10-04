@@ -1,5 +1,7 @@
 package org.stepDefinitions;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -30,7 +32,7 @@ public class Hooks extends Base {
 		extentReports = new ExtentReports(System.getProperty("user.dir")+"/reporter/Report "+dateName+".html",false);
 	}
 
-	@Before(order = 0)
+	@BeforeMethod
 	public static void setup() throws IOException {
 		prop = new Properties();
 		fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/data.properties");
@@ -42,20 +44,20 @@ public class Hooks extends Base {
 		}
 		else 
 		{
-			driver = new FirefoxDriver();
+			//driver = new FirefoxDriver();
 		}
 		driver.manage().timeouts().implicitlyWait(ITO,TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 	
-	@Before(order=1)
+	@BeforeMethod
 	public static void openApplication()
 	{
 		String url = prop.getProperty("beazleyDashboardPage_URL");
 		driver.get(url);
 	}
 	
-	@After(order=1)
+	@AfterMethod
 	public static void takesScreenShot(Scenario scenario) throws IOException, InterruptedException {
 		if(scenario.getStatus()==Status.FAILED)
 		{
@@ -73,21 +75,21 @@ public class Hooks extends Base {
 			FWUtils.takesScreenShot(driver,scenario.getName());
 			extentTest.log(LogStatus.PASS,extentTest.addScreenCapture(FWUtils.takesScreenShot(driver,photoPath)));
 		}
+		driver.close();
+		extentReports.endTest(extentTest);
+		extentReports.flush();
+		extentReports.close();
 //		scenario.attach(FWUtils.getScreenShotByte(driver),"image/png",scenario.getName());
 //		extentTest.fail("details", MediaEntityBuilder.createScreenCaptureFromPath(FWUtils.takesScreenShot(driver)).build());
 //		extentTest.log(Status.FAIL,"Test case failed");
 	}
 	
-	@After(order=0)
-	public static void tearDown() {
-		driver.close();
-		extentReports.endTest(extentTest);
-	}
+	
+		
 
 	@AfterAll
 	public static void endReport() {
-		extentReports.flush();
-		extentReports.close();
+		
 	}
 	
 }

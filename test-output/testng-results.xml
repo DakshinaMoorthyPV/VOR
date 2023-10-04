@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="0" failed="5" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-10-04T17:05:14Z" name="Suite" finished-at="2023-10-04T17:05:17Z" duration-ms="3332">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.testRunner.RunCucumberTest@2dde1bff]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2023-10-04T17:05:14Z" name="TestNg" finished-at="2023-10-04T17:05:17Z" duration-ms="3332">
+      <class name="org.testRunner.RunCucumberTest">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.testRunner.RunCucumberTest@2dde1bff]" started-at="2023-10-04T22:35:14Z" name="setUpClass" finished-at="2023-10-04T22:35:14Z" duration-ms="688" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@74d6736]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.testRunner.RunCucumberTest@2dde1bff]" started-at="2023-10-04T22:35:14Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-10-04T22:35:15Z" duration-ms="442" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing_the_feature_for_content_of_page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Testing_the_feature_for_content_of_page"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null
+	at org.stepDefinitions.Testing_the_feature_for_application_selection_page.user_need_to_be_on_Beazley_page(Testing_the_feature_for_application_selection_page.java:27)
+	at ✽.User need to be on "" "Testing_the_feature_for_content_of_page"(file:///C:/Users/Dakshina.Moorthy/Desktop/Visionet/VOR/BeazleyAutomation/src/test/resources/beazleyDashboardPageFeatures/Testing_the_feature_for_content_of_page.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.testRunner.RunCucumberTest@2dde1bff]" started-at="2023-10-04T22:35:15Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-10-04T22:35:15Z" duration-ms="29" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing_the_feature_for_dashboard_page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Testing_the_feature_for_dashboard_page"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null
+	at org.stepDefinitions.Testing_the_feature_for_application_selection_page.user_need_to_be_on_Beazley_page(Testing_the_feature_for_application_selection_page.java:27)
+	at ✽.User need to be on "" "Testing_the_feature_for_dashboard_page"(file:///C:/Users/Dakshina.Moorthy/Desktop/Visionet/VOR/BeazleyAutomation/src/test/resources/beazleyDashboardPageFeatures/Testing_the_feature_for_dashboard_page.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.testRunner.RunCucumberTest@2dde1bff]" started-at="2023-10-04T22:35:15Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-10-04T22:35:15Z" duration-ms="35" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing_the_feature_for_risk_score_indicator"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Testing_the_feature_for_risk_score_indicator"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null
+	at org.stepDefinitions.Testing_the_feature_for_application_selection_page.user_need_to_be_on_Beazley_page(Testing_the_feature_for_application_selection_page.java:27)
+	at ✽.User need to be on "" "Testing_the_feature_for_risk_score_indicator"(file:///C:/Users/Dakshina.Moorthy/Desktop/Visionet/VOR/BeazleyAutomation/src/test/resources/beazleyDashboardPageFeatures/Testing_the_feature_for_risk_score_indicator.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.testRunner.RunCucumberTest@2dde1bff]" started-at="2023-10-04T22:35:15Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-10-04T22:35:15Z" duration-ms="24" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing_the_feature_for_view_of_risk"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Testing_the_feature_for_view_of_risk"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null
+	at org.stepDefinitions.Testing_the_feature_for_application_selection_page.user_need_to_be_on_Beazley_page(Testing_the_feature_for_application_selection_page.java:27)
+	at ✽.User need to be on "" "Testing_the_feature_for_view_of_risk"(file:///C:/Users/Dakshina.Moorthy/Desktop/Visionet/VOR/BeazleyAutomation/src/test/resources/beazleyDashboardPageFeatures/Testing_the_feature_for_view_of_risk.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.testRunner.RunCucumberTest@2dde1bff]" started-at="2023-10-04T22:35:15Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-10-04T22:35:15Z" duration-ms="23" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing_the_navigation_in_dashboard_page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Testing_the_navigation_in_dashboard_page"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.getTitle()" because "org.stepDefinitions.Testing_the_feature_for_application_selection_page.driver" is null
+	at org.stepDefinitions.Testing_the_feature_for_application_selection_page.user_need_to_be_on_Beazley_page(Testing_the_feature_for_application_selection_page.java:27)
+	at ✽.User need to be on "" "Testing_the_navigation_in_dashboard_page"(file:///C:/Users/Dakshina.Moorthy/Desktop/Visionet/VOR/BeazleyAutomation/src/test/resources/beazleyDashboardPageFeatures/Testing_the_navigation_in_dashboard_page.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:org.testRunner.RunCucumberTest@2dde1bff]" started-at="2023-10-04T22:35:15Z" name="tearDownClass" finished-at="2023-10-04T22:35:17Z" duration-ms="2065" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- org.testRunner.RunCucumberTest -->
+    </test> <!-- TestNg -->
+  </suite> <!-- Suite -->
+</testng-results>
