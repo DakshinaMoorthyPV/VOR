@@ -11,9 +11,17 @@ pipeline {
     }
 
     stages {
+       stages {
         stage('Checkout') {
             steps {
-                checkout scm 
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: '*/master']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/YourUsername/YourRepo.git',
+                        credentialsId: 'Dakshina_Git'
+                    ]]
+                ])
             }
         }
 
