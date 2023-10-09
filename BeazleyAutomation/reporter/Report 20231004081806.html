@@ -1,0 +1,3007 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			ExtentReports Library 2.41.1 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+			Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+			Documentation: http://extentreports.relevantcodes.com 
+		-->
+
+		<meta charset='UTF-8' /> 
+		<meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+		<meta name='robots' content='noodp, noydir' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<meta name='extentx' id='extentx' content='' />
+		
+		<title>
+				ExtentReports 2.0
+		</title>
+		
+		
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.css' type='text/css' rel='stylesheet' />
+		
+		<style>
+				
+            
+                
+            
+        
+		</style>
+	</head>
+	
+	
+	<body class='extent default standard hide-overflow'>
+		<!-- nav -->
+		<nav>
+			<div class='logo-container blue darken-2'>
+				<a class='logo-content' href='http://extentreports.relevantcodes.com'>
+					<span>ExtentReports</span>
+				</a>
+				<a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+			</div>
+			<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+				<li class='analysis waves-effect active'><a href='#!' class='test-view' onclick="_updateCurrentStage(0)"><i class='mdi-action-dashboard'></i>Test Details</a></li>
+					<li class='analysis waves-effect'><a href='#!' class='exceptions-view' onclick="_updateCurrentStage(2)"><i class='mdi-action-bug-report'></i>Exceptions</a></li>
+				<li class='analysis waves-effect'>
+					<a href='#!' onclick="_updateCurrentStage(-1)" class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a>
+				</li>
+			</ul>
+			<span class='report-name'>Automation Report</span> <span class='report-headline'></span>
+			<ul class='right hide-on-med-and-down nav-right'>
+				<li class='theme-selector' alt='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");' title='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");'>
+					<i class='mdi-hardware-desktop-windows'></i>
+				</li>
+				<li>
+					<span class='suite-started-time'>2023-10-04 21:19:07</span>
+				</li>
+				<li>
+					<span>v2.41.1</span>
+				</li>
+			</ul>
+		</nav>
+		<!-- /nav -->
+		
+		<!-- container -->
+		<div class='container'>
+			
+			<!-- dashboard -->
+			<div id='dashboard-view' class='row'>
+				<div class='time-totals'>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-tests'> 
+							<span class='panel-name'>Total Tests</span> 
+							<span class='total-tests'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-steps'> 
+							<span class='panel-name'>Total Steps</span> 
+							<span class='total-steps'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-current'> 
+							<span class='panel-name'>Total Time Taken (Current Run)</span> 
+							<span class='suite-total-time-current-value panel-lead'>1h 1m 0s+899ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-overall'> 
+							<span class='panel-name'>Total Time Taken (Overall)</span> 
+							<span class='suite-total-time-overall-value panel-lead'>1h 1m 0s+899ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-start-time'>
+						<div class='card accent green-accent'> 
+							<span class='panel-name'>Start</span> 
+							<span class='panel-lead suite-started-time'>2023-10-04 20:18:06</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-end-time'>
+						<div class='card accent pink-accent'> 
+							<span class='panel-name'>End</span> 
+							<span class='panel-lead suite-ended-time'>2023-10-04 21:19:07</span> 
+						</div> 
+					</div>
+				</div>
+				<div class='charts'>
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Tests View</span>
+							</div> 
+							<div class='panel-setting modal-trigger test-count-setting right'>
+								<a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='test-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div> 
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Steps View</span>
+							</div> 
+							<div class='panel-setting modal-trigger step-status-filter right'>
+								<a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='step-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed </span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div>
+					<div class='col s12 m12 l4 fh'> 
+						<div class='card-panel'> 
+							<span class='panel-name'>Pass Percentage</span> 
+							<span class='pass-percentage panel-lead'></span> 
+							<div class='progress light-blue lighten-3'> 
+								<div class='determinate light-blue'></div> 
+							</div> 
+						</div> 
+					</div>
+				</div>
+				<div class='system-view'>
+					<div class='col l4 m12 s12'>
+						<div class='card-panel'>
+							<span class='label info outline right'>Environment</span>
+							<table>
+								<thead>
+									<tr>
+										<th>Param</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td>User Name</td>
+											<td>Bhuvaneswari.T</td>
+										</tr>
+										<tr>
+											<td>OS</td>
+											<td>Windows 10</td>
+										</tr>
+										<tr>
+											<td>Java Version</td>
+											<td>17.0.5</td>
+										</tr>
+										<tr>
+											<td>Host Name</td>
+											<td>VSPLBLRLT0703</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /dashboard -->
+			
+			<!-- tests -->
+			<div id='test-view' class='row _addedTable'>
+				<div class='col _addedCell1'>
+					<div class='contents'>
+						<div class='card-panel heading'>
+							<h5>Tests</h5>
+						</div>
+						<div class='card-panel filters'>
+							<div>
+								<a class='dropdown-button btn-floating btn-small waves-effect waves-light grey tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+									<i class='mdi-action-reorder'></i>
+								</a>
+								<ul id='tests-toggle' class='dropdown-content'>
+									<li class='pass'><a href='#!'>Pass</a></li>
+									<li class='fail'><a href='#!'>Fail</a></li>
+									<li class='skip'><a href='#!'>Skip</a></li>
+									<li class='divider'></li>
+									<li class='clear'><a href='#!'>Clear Filters</a></li>
+								</ul>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+									<i class='mdi-navigation-close'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+									<i class='mdi-action-track-changes'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light blue enabled' id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters'>
+									<i class='mdi-navigation-refresh'></i>
+								</a>
+							</div>
+							<div class='search' alt='Search Tests' title='Search Tests'>
+								<div class='input-field left'>
+									<input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+								</div>
+								<a href="#" class='btn-floating btn-small waves-effect waves-light grey'>
+									<i class='mdi-action-search'></i>
+								</a>
+							</div>
+						</div>
+						<div class='card-panel no-padding-h no-padding-v no-margin-v'>
+							<div class='wrapper'>
+								<ul id='test-collection' class='test-collection'>
+										<li class='collection-item test displayed active pass ' extentid='28280e1f-fb53-408c-ada8-984d6b408be2'>
+											<div class='test-head'>
+												<span class='test-name'>verified ProductCategory Navigation & Page Load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:18:56</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:19:46</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+157ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->1</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:40</td>
+																	<td class='step-details'>Page Name: ProductCategory PageCotingency</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:40</td>
+																	<td class='step-details'>ProductCategory PageCotingency - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:40</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/insurance-product-category</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:40</td>
+																	<td class='step-details'>Execution Completed -verified ProductCategory Navigation & Page Load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:40</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:40</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:19:45</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004081944.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004081944.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='b78faf12-55cc-4307-a374-2dae2608ba05'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Industry Navigation &Page Load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:20:37</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:21:27</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+126ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->2</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:21</td>
+																	<td class='step-details'>Page Name: Industry</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:21</td>
+																	<td class='step-details'>Industry - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:21</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/pt-13---industrypage</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:21</td>
+																	<td class='step-details'>Execution Completed -verified  Industry Navigation &Page Load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:21</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:21</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:21:25</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082125.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082125.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='f1e71dfc-a975-4f40-a74c-204999fbcb10'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Event Navigation & Page Load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:22:15</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:23:06</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 51s+759ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->3</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:01</td>
+																	<td class='step-details'>Page Name: Event</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:01</td>
+																	<td class='step-details'>Event - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:01</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-17---eventcarouselblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:01</td>
+																	<td class='step-details'>Execution Completed -verified  Event Navigation & Page Load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:01</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:01</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:05</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082305.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082305.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='4712c99e-ba9e-4f09-bd73-990ef7e7fa28'>
+											<div class='test-head'>
+												<span class='test-name'>verified Person page Navigation & Page Load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:23:55</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:24:02</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 6s+928ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->4</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:57</td>
+																	<td class='step-details'>Page Name: Person</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:57</td>
+																	<td class='step-details'>Person - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:57</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/pt-3---personpage</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:57</td>
+																	<td class='step-details'>Execution Completed -verified Person page Navigation & Page Load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:57</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:23:57</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:24:01</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082401.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082401.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='41099aee-6764-4c14-abdf-36b231530ee3'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Article page Navigation & Page Load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:24:50</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:25:40</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+870ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->5</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:25:34</td>
+																	<td class='step-details'>Page Name: Article</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:25:34</td>
+																	<td class='step-details'>Article - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:25:34</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/pt-7---articlepage</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:25:34</td>
+																	<td class='step-details'>Execution Completed -verified  Article page Navigation & Page Load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:25:34</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:25:34</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:25:38</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082538.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082538.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='2e79453e-2be7-41a3-942e-75712c5d5ec7'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Event Page Navigation & Page Load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:26:37</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:27:26</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+388ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->6</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:21</td>
+																	<td class='step-details'>Page Name: Event</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:21</td>
+																	<td class='step-details'>Event - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:21</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-73---eventlistingblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:21</td>
+																	<td class='step-details'>Execution Completed -verified  Event Page Navigation & Page Load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:21</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:21</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:27:25</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082725.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082725.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='cb14321c-70a0-4607-837c-09c20afe9008'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Home Page Navigation & Page Load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:28:17</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:29:09</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 51s+707ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->7</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:29:01</td>
+																	<td class='step-details'>Page Name: homepageHeroBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:29:01</td>
+																	<td class='step-details'>homepageHeroBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:29:01</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/pt-1---homepage</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:29:01</td>
+																	<td class='step-details'>Execution Completed -verified  Home Page Navigation & Page Load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:29:01</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:29:01</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:29:05</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082905.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004082905.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='fe0129f5-4bcd-4ff9-9dae-4fe201ef9a60'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Generic Hero Block Page Navigation & page load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:30:07</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:30:56</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+14ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->8</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:30:51</td>
+																	<td class='step-details'>Page Name: genericHeroBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:30:51</td>
+																	<td class='step-details'>genericHeroBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:30:51</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-05---genericheroblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:30:51</td>
+																	<td class='step-details'>Execution Completed -verified  Generic Hero Block Page Navigation & page load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:30:51</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:30:51</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:30:55</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083055.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083055.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='ee5b653a-dde6-49b4-b221-2aea036c8364'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Call Out Block Page Navigation & page load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:31:45</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:32:34</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 48s+988ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->9</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:32:29</td>
+																	<td class='step-details'>Page Name: calloutBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:32:29</td>
+																	<td class='step-details'>calloutBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:32:29</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---calloutanimationitemblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:32:29</td>
+																	<td class='step-details'>Execution Completed -verified  Call Out Block Page Navigation & page load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:32:29</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:32:29</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:32:33</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083233.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083233.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='1f0cbe8d-bdd3-4313-89a9-99da7d336bdc'>
+											<div class='test-head'>
+												<span class='test-name'>verified  IconCards Block Page Navigation & page load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:33:23</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:34:12</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+36ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->10</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:34:06</td>
+																	<td class='step-details'>Page Name: iconCardsBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:34:06</td>
+																	<td class='step-details'>iconCardsBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:34:06</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---iconcardblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:34:06</td>
+																	<td class='step-details'>Execution Completed -verified  IconCards Block Page Navigation & page load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:34:06</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:34:06</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:34:11</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083411.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083411.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='e4dad4d4-64a3-401d-9a56-5c3636d1e227'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Tabbed Person Page Navigation & page load </span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:35:00</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:35:05</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 5s+248ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->11</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:35:00</td>
+																	<td class='step-details'>Test case failed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:35:04</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083504.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083504.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='25247556-c146-4825-b927-95dbfa917a61'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Card Carousel Block Navigation & page load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:35:54</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:36:43</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+262ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->12</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:36:37</td>
+																	<td class='step-details'>Page Name: cardCarouselBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:36:38</td>
+																	<td class='step-details'>cardCarouselBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:36:38</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-15---cardcarouselblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:36:38</td>
+																	<td class='step-details'>Execution Completed -verified  Card Carousel Block Navigation & page load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:36:38</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:36:38</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:36:42</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083642.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083642.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='9e77e351-fddf-40e5-96d4-346f483cc5b3'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Event Carousel Block Page Navigation & page load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:37:31</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:38:24</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 52s+623ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->13</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:38:18</td>
+																	<td class='step-details'>Page Name: eventCarouselBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:38:18</td>
+																	<td class='step-details'>eventCarouselBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:38:18</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-17---eventcarouselblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:38:18</td>
+																	<td class='step-details'>Execution Completed -verified  Event Carousel Block Page Navigation & page load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:38:18</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:38:18</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:38:22</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083822.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004083822.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='29562cd2-aded-4074-bc9f-aa26f190ec07'>
+											<div class='test-head'>
+												<span class='test-name'>verified  video card block Page Navigation & page load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:39:17</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:40:07</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+247ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->14</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:40:01</td>
+																	<td class='step-details'>Page Name: videoCardBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:40:01</td>
+																	<td class='step-details'>videoCardBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:40:01</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-21---videocardblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:40:01</td>
+																	<td class='step-details'>Execution Completed -verified  video card block Page Navigation & page load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:40:01</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:40:01</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:40:05</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084005.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084005.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='92f2f05b-a322-4695-9362-b9ca2cbd8d60'>
+											<div class='test-head'>
+												<span class='test-name'>verified  Image Page Navigation & page load </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:40:55</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:41:45</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+679ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->15</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:41:39</td>
+																	<td class='step-details'>Page Name: imageBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:41:39</td>
+																	<td class='step-details'>imageBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:41:39</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-27---imageblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:41:39</td>
+																	<td class='step-details'>Execution Completed -verified  Image Page Navigation & page load</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:41:39</td>
+																	<td class='step-details'>Verified the page loaded successfully without an Error</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:41:39</td>
+																	<td class='step-details'>Test case passed is-->Verify Page Loaded Successfully.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:41:44</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084143.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084143.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='48c3f392-4b96-4852-aa70-0c998c41073e'>
+											<div class='test-head'>
+												<span class='test-name'>validated Service Form Questions & Options listing </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:42:34</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:43:31</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 57s+409ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->16</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:18</td>
+																	<td class='step-details'>Page Name: brokercontactformclientservices</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:18</td>
+																	<td class='step-details'>brokercontactformclientservices - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:18</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c81---client-services---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:18</td>
+																	<td class='step-details'>Execution Completed -validated Service Form Questions & Options listing</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:19</td>
+																	<td class='step-details'>The expected content displayed in page : 'Need to contact us about something else?'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:19</td>
+																	<td class='step-details'>The expected content displayed in page : 'Choose another contact option'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:19</td>
+																	<td class='step-details'>The expected content displayed in page : 'Contact us for client access to third party cyber services.'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:26</td>
+																	<td class='step-details'>Filled service Form for 1st question</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:26</td>
+																	<td class='step-details'>Test case passed is-->Verify broker contact form client services.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:43:30</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084330.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084330.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='323187e8-0ad2-4355-8b97-7ef7e6384b90'>
+											<div class='test-head'>
+												<span class='test-name'>validated Broker Contract Form General Feedback </span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:44:20</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:45:44</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 24s+366ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->17</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:45:04</td>
+																	<td class='step-details'>Page Name: brokercontactformgeneralfeedback</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:45:04</td>
+																	<td class='step-details'>brokercontactformgeneralfeedback - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:45:04</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c81---formgeneralfeedbackblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:45:04</td>
+																	<td class='step-details'>Execution Completed -validated Broker Contract Form General Feedback</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:45:05</td>
+																	<td class='step-details'>The expected content displayed in page : 'Need to contact us about something else?'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:45:05</td>
+																	<td class='step-details'>The expected content displayed in page : 'Choose another contact option'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:45:05</td>
+																	<td class='step-details'>The expected content displayed in page : 'Ask us about something else / give us feedback'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:45:12</td>
+																	<td class='step-details'>The expected content displayed in page : 'This feild is required'</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:45:39</td>
+																	<td class='step-details'>Test case failed is-->validate broker contact form general feedback.</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:45:43</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084543.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084543.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='3b18050c-5b5e-45d8-bbbc-c65ed369d078'>
+											<div class='test-head'>
+												<span class='test-name'>validated Broker Contact From My BeazleySupport </span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:46:32</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:47:57</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 24s+250ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->18</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:47:16</td>
+																	<td class='step-details'>Page Name: brokercontactformmyBeazleysupport</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:47:16</td>
+																	<td class='step-details'>brokercontactformmyBeazleysupport - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:47:16</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c81---formgeneralfeedbackblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:47:16</td>
+																	<td class='step-details'>Execution Completed -validated Broker Contact From My BeazleySupport</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:47:17</td>
+																	<td class='step-details'>The expected content displayed in page : 'Need to contact us about something else?'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:47:17</td>
+																	<td class='step-details'>The expected content displayed in page : 'Choose another contact option'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:47:17</td>
+																	<td class='step-details'>The expected content displayed in page : 'Ask us about something else / give us feedback'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:47:25</td>
+																	<td class='step-details'>The expected content displayed in page : 'This feild is required'</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:47:51</td>
+																	<td class='step-details'>Test case failed is-->validate broker contact form general feedback.</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>20:47:56</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084755.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084755.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='3b16b68f-1116-4b4c-b6fb-71d739969c1e'>
+											<div class='test-head'>
+												<span class='test-name'>validated customer contact form </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:48:45</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:48:53</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 7s+817ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->19</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:48:47</td>
+																	<td class='step-details'>Page Name: customercontactform</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:48:47</td>
+																	<td class='step-details'>customercontactform - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:48:47</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c82---customer-contact-form---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:48:47</td>
+																	<td class='step-details'>Execution Completed -validated customer contact form</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:48:47</td>
+																	<td class='step-details'>The expected content displayed in page : 'Error 404'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:48:47</td>
+																	<td class='step-details'>Test case passed is-->validate customer contact form.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:48:51</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084851.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004084851.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='a16dcfb3-d6d0-4e2b-97c1-67b75c8d4307'>
+											<div class='test-head'>
+												<span class='test-name'>validated Customer Form Cyberaccess 3rd Party </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:49:57</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:50:54</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 56s+727ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->20</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:41</td>
+																	<td class='step-details'>Page Name: customerformcyberaccess3rdparty</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:41</td>
+																	<td class='step-details'>customerformcyberaccess3rdparty - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:41</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c82---cyber-access-third-party-services---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:41</td>
+																	<td class='step-details'>Execution Completed -validated Customer Form Cyberaccess 3rd Party</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:42</td>
+																	<td class='step-details'>The expected content displayed in page : 'Need to contact us about something else?'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:42</td>
+																	<td class='step-details'>The expected content displayed in page : 'Choose another contact option'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:42</td>
+																	<td class='step-details'>The expected content displayed in page : 'Enquire about becoming a Beazley Broker'</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:42</td>
+																	<td class='step-details'>Form Heanding, Description & link text are displayed as exepected.</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:49</td>
+																	<td class='step-details'>Filled service Form for 1st question</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:49</td>
+																	<td class='step-details'>Test case passed is-->validate customer form cyberaccess 3rd party</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:50:53</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085053.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085053.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='adce9d1b-290a-4bfd-bde2-f59c5470791e'>
+											<div class='test-head'>
+												<span class='test-name'>validated Document listing Filter </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:51:42</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:52:32</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+780ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->21</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Page Name: Documentlistingfilter</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Documentlistingfilter - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-78---documentlistingblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Execution Completed -validated Document listing Filter</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Content listing filter selected options are displayed</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Document Listing page contains the filter: Geography</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Content listing filter selected options are displayed</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Document Listing page contains the filter: Product Category</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Content listing filter selected options are displayed</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Document Listing page contains the filter: Document Type</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:27</td>
+																	<td class='step-details'>Test case passed is-->validate document listing</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:52:31</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085231.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085231.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='0df29bdb-3496-4809-8d5a-a4c154c252d9'>
+											<div class='test-head'>
+												<span class='test-name'>validated Event Information Display and Content </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:53:21</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:54:10</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 49s+91ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->22</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:54:05</td>
+																	<td class='step-details'>Page Name: EventInformation</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:54:05</td>
+																	<td class='step-details'>EventInformation - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:54:05</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/pt-8---eventpage</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:54:05</td>
+																	<td class='step-details'>Execution Completed -validated Event Information Display and Content</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:54:05</td>
+																	<td class='step-details'>Event Page contain the information about :Location</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:54:05</td>
+																	<td class='step-details'>Event Page contain the information about :Date & Time</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:54:05</td>
+																	<td class='step-details'>Test case passed is-->validate event information</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:54:09</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085409.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085409.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='435c9a27-3ada-456f-b549-af2af186a91f'>
+											<div class='test-head'>
+												<span class='test-name'>validated Generic Hero Block Display and Modal Content </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:54:59</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:55:49</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 50s+275ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->23</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:42</td>
+																	<td class='step-details'>Page Name: GenericHeroBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>GenericHeroBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-05---genericheroblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Execution Completed -validated Generic Hero Block Display and Modal Content</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Login</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Cyber attack response services example over two lines</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Ransomware</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Claims</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Claims</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Claims</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Claims</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : myBeazley</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Insurance. Just different</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : What connects a moonlit heist with a medical device?</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Nullam id dolor id nibh ultricies vehicula ut id</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Chief Executive Officer's Statement</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:43</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:44</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:44</td>
+																	<td class='step-details'>Generic Hero Block contain the model : Lorem ipsum dolor sit amet</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:44</td>
+																	<td class='step-details'>Test case passed is-->validate genericheroblock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:55:48</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085548.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085548.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='fecb2db7-a25d-403f-8a06-e945f6a5548e'>
+											<div class='test-head'>
+												<span class='test-name'>validated Header Block Display and Content </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:56:38</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 20:57:35</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 56s+625ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->24</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Page Name: HeaderBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>HeaderBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-15---cardcarouselblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Execution Completed -validated Header Block Display and Content</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---Log InExpected Text to be shown in UI :Log In</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---Who We AreExpected Text to be shown in UI :Who We Are</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---ProductsExpected Text to be shown in UI :Products</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---IndustriesExpected Text to be shown in UI :Industries</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---ClaimsExpected Text to be shown in UI :Claims</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---InvestorExpected Text to be shown in UI :Investor</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Risk Insights</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading:</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Risk Insights</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Risk Insights</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Risk Insights</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading:</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Risk Insights</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Article List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Article List Shadow</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Event List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Event List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Document List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Services List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Document List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Industry List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Product List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Product Category List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: Loss Scenario List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>CardCarouselBlock Heading: People List</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:22</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:29</td>
+																	<td class='step-details'>Test case passed is-->validate Header Block</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:57:33</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085733.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004085733.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='edfb4d51-330e-46f9-967f-8e3c41468166'>
+											<div class='test-head'>
+												<span class='test-name'>validated Footer Display and Link Navigation </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 20:58:26</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 21:11:43</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 13m 17s+707ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->25</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:59:09</td>
+																	<td class='step-details'>Page Name: FooterBlock</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:59:09</td>
+																	<td class='step-details'>FooterBlock - Page Loaded</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:59:09</td>
+																	<td class='step-details'>Current Url: https://uat.dxp.beazley.com/en-US/test-pages/testpage---c-15---cardcarouselblock---page</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:59:09</td>
+																	<td class='step-details'>Execution Completed -validated Footer Display and Link Navigation</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:59:16</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'Investor Relations' link & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>20:59:16</td>
+																	<td class='step-details'>Click to Action on Investor Relations- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:00:05</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'Careers' link & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:00:05</td>
+																	<td class='step-details'>Click to Action on Careers- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:01:42</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'Contact Us' link & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:01:42</td>
+																	<td class='step-details'>Click to Action on Contact Us- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:02:30</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'Link 4' link & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:02:30</td>
+																	<td class='step-details'>Click to Action on Link 4- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:03:19</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'Link 5' link & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:03:19</td>
+																	<td class='step-details'>Click to Action on Link 5- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:04:56</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'HP UAT ' link  & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:04:56</td>
+																	<td class='step-details'>Click to Action on HP UAT- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:04:56</td>
+																	<td class='step-details'>verifytext  Error 404:  true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:04:56</td>
+																	<td class='step-details'>actual text: Error 404</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:04:56</td>
+																	<td class='step-details'>actual text: Error 404</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:05:45</td>
+																	<td class='step-details'>************** Footer - Primary Block Links - Display & Navigation - Validaiton Compelted!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:05:51</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'Privacy & Cookies' link & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:05:51</td>
+																	<td class='step-details'>Click to Action on Privacy & Cookies- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:07:28</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'Legal Information' link & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:07:28</td>
+																	<td class='step-details'>Click to Action on Legal Information- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:09:04</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'Modern Slavery' link & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:09:04</td>
+																	<td class='step-details'>Click to Action on Modern Slavery- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:10:41</td>
+																	<td class='step-details'>true! In Footer Section - Clicked on 'HP UAT ' link  & Link Navigaiton verified!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:10:41</td>
+																	<td class='step-details'>Click to Action on HP UAT- Success!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:11:31</td>
+																	<td class='step-details'>************** Footer - Secondary  Block Links - Display & Navigation - Validaiton Compelted!</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:11:38</td>
+																	<td class='step-details'>Test case passed is-->validate Footer Block</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:11:42</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091142.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091142.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='63e37233-e12d-4c6c-b37c-b52da4a87a41'>
+											<div class='test-head'>
+												<span class='test-name'>Image Block validation1 </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 21:12:32</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 21:13:00</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 27s+683ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->1</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:12:55</td>
+																		<td class='step-name'>Card section - Image Block Display & Title visible in UI</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091254.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091254.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:12:55</td>
+																	<td class='step-details'>Test case passed is-->Testing Image Block Component</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:12:59</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091259.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091259.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:13:51</td>
+																		<td class='step-name'>Validated the logo is present</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091350.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091350.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:13:51</td>
+																	<td class='step-details'>Test case passed is-->Logo Component</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:13:55</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091355.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091355.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:44</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:44</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---Log InExpected Text to be shown in UI :Log In</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:44</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:44</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---Who We AreExpected Text to be shown in UI :Who We Are</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:44</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:44</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---ProductsExpected Text to be shown in UI :Products</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:45</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:45</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---IndustriesExpected Text to be shown in UI :Industries</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:45</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:45</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---ClaimsExpected Text to be shown in UI :Claims</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:45</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:45</td>
+																	<td class='step-details'>Verification Successful - Correct text is shown on the FooterSection. ActualText: ---InvestorExpected Text to be shown in UI :Investor</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:45</td>
+																	<td class='step-details'>Yes ! Element is Present :true</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:47</td>
+																		<td class='step-name'>Verified HeaderWebelement</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091447.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091447.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:47</td>
+																	<td class='step-details'>Test case passed is-->Header Component</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:14:51</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091451.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091451.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='89b8b309-0456-45e2-81ea-fa1b8420435b'>
+											<div class='test-head'>
+												<span class='test-name'>card carousel block page validation1 </span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 21:15:41</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 21:15:57</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 15s+698ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->1</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:15:43</td>
+																		<td class='step-name'>Validated the title of the page</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091543.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091543.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:15:45</td>
+																		<td class='step-name'>Validated the logo is present</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091545.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091545.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>21:15:51</td>
+																	<td class='step-details'>Test case failed is-->Testing_the_feature_for_card_carousel_block_page</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>21:15:56</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091555.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091555.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='c66227a1-24ba-4391-8173-4fadd83250b1'>
+											<div class='test-head'>
+												<span class='test-name'>card carousel block page validation2 </span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 21:16:45</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 21:16:59</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 13s+448ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->2</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:16:47</td>
+																		<td class='step-name'>Validated the title of the page</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091647.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091647.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>21:16:54</td>
+																	<td class='step-details'>Test case failed is-->Card Carousel Block Page Header section & cardcarousalblockvalidation</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>21:16:58</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091658.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091658.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active fail ' extentid='35df5ed9-96b6-404a-840d-9b0d07ee92ef'>
+											<div class='test-head'>
+												<span class='test-name'>card carousel block page validation3 <i class='tooltipped mdi-alert-error' data-position='top' data-delay='50' data-tooltip='Close was called before test could end safely using EndTest.'></i></span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 21:17:47</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 21:19:07</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 19s+732ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->3</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:17:49</td>
+																		<td class='step-name'>Validated the title of the page</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091749.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091749.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>21:19:07</td>
+																	<td class='step-details'><pre>com.relevantcodes.extentreports.ExtentTestInterruptedException: Close was called before test could end safely using EndTest.
+	at com.relevantcodes.extentreports.Report.terminate(Report.java:425)
+	at com.relevantcodes.extentreports.ExtentReports.close(ExtentReports.java:917)
+	at org.stepDefinitions.Hooks.endReport(Hooks.java:90)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invokeStatic(Invoker.java:80)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:45)
+	at io.cucumber.java.JavaStaticHookDefinition.execute(JavaStaticHookDefinition.java:49)
+	at io.cucumber.core.runner.Runner.executeHook(Runner.java:112)
+	at io.cucumber.core.runner.Runner.lambda$executeHooks$2(Runner.java:99)
+	at io.cucumber.core.runner.ThrowableCollector.execute(ThrowableCollector.java:21)
+	at io.cucumber.core.runner.Runner.executeHooks(Runner.java:99)
+	at io.cucumber.core.runner.Runner.runAfterAllHooks(Runner.java:93)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runAfterAllHooks(CucumberExecutionContext.java:99)
+	at io.cucumber.testng.TestNGCucumberRunner.finish(TestNGCucumberRunner.java:143)
+	at io.cucumber.testng.AbstractTestNGCucumberTests.tearDownClass(AbstractTestNGCucumberTests.java:57)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeAfterClassConfigurations(TestMethodWorker.java:229)
+	at org.testng.internal.invokers.TestMethodWorker.invokeAfterClassMethods(TestMethodWorker.java:215)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:131)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='947cab0f-9e5f-4364-8f61-eaa05f2e1192'>
+											<div class='test-head'>
+												<span class='test-name'>Image Block validation2 </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2023-10-04 21:17:49</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2023-10-04 21:18:17</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 27s+382ms</span>
+												</div>
+												<div class='test-desc'>Invocation of test-->2</div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:18:12</td>
+																		<td class='step-name'>Card section - Image Block Display & Title visible in UI</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091811.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091811.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:18:12</td>
+																	<td class='step-details'>Test case passed is-->Testing_the_feature_for_image_block</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>21:18:16</td>
+																	<td class='step-details'><a href='C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091816.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\Bhuvaneshwari.T\Documents\QA Compentency\Beazely\Cypress Automation Conversion\Automation\BeazleyAutomation\Screenshots\./ScreenShots/20231004091816.png' /></a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id='test-details-wrapper' class='col _addedCell2'>
+					<div class='contents'>
+						<div class='card-panel details-view'>
+							<h5 class='details-name'></h5>
+							<div class='step-filters right'>
+								<span class='btn-floating btn-small waves-effect waves-light blue' status='info' alt='info' title='info'><i class='mdi-action-info-outline'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light green' status='pass' alt='pass' title='pass'><i class='mdi-action-check-circle'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red' status='fail' alt='fail' title='fail'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red darken-4' status='fatal' alt='fatal' title='fatal'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red lighten-2' status='error' alt='error' title='error'><i class='mdi-alert-error'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light orange' alt='warning' status='warning' title='warning'><i class='mdi-alert-warning'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light cyan' status='skip' alt='skip' title='skip'><i class='mdi-content-redo'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light grey darken-2' status='clear-step-filter' alt='Clear filters' title='Clear filters'><i class='mdi-content-clear'></i></span>
+							</div>
+							<div class='details-container'>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /tests -->
+			
+			<!-- categories -->
+			<!-- /categories -->
+			
+			<!-- exceptions -->
+				<div id='exceptions-view' class='row _addedTable hide'>
+					<div class='col _addedCell1'>
+						<div class='contents'>
+							<div class='card-panel heading'>
+								<h5>Defects</h5>
+							</div>
+							<div class='card-panel filters'>
+								<div class='search' alt='Search tests' title='Search tests'>
+									<div class='input-field left'>
+										<input id='searchTests' type='text' class='validate' placeholder='Search tests...'>
+									</div>
+									<a href="#" class='btn-floating btn-small waves-effect waves-light blue lighten-1'>
+										<i class='mdi-action-search'></i>
+									</a>
+								</div>
+							</div>
+							<div class='card-panel no-padding-h no-padding-v'>
+								<div class='wrapper'>
+									<ul id='exception-collection' class='exception-collection'>
+											<li class='exception-item displayed'>
+												<div class='exception-head'>
+													<span class='exception-name'>com.relevantcodes.extentreports.ExtentTestInterruptedException</span>
+												</div>
+												<div class='exception-test-count'>
+													<span class='fail label'>1</span>
+												</div>
+												<div class='exception-body'>
+													<div class='exception-tests'>
+														<table class='bordered'>
+															<thead>
+																<tr>
+																	<th>RunDate</th>
+																	<th>Test Name</th>
+																	<th>Exception</th>
+																</tr>
+															</thead>
+															<tbody>
+                                                                   <tr class='fail'>
+                                                                       <td>2023-10-04 21:17:47</td>
+                                                                       <td><span class='exception-link linked' extentid='35df5ed9-96b6-404a-840d-9b0d07ee92ef'>card carousel block page validation3</span></td>
+                                                                       <td><pre class='exception-message'>com.relevantcodes.extentreports.ExtentTestInterruptedException: Close was called before test could end safely using EndTest.
+	at com.relevantcodes.extentreports.Report.terminate(Report.java:425)
+	at com.relevantcodes.extentreports.ExtentReports.close(ExtentReports.java:917)
+	at org.stepDefinitions.Hooks.endReport(Hooks.java:90)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invokeStatic(Invoker.java:80)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:45)
+	at io.cucumber.java.JavaStaticHookDefinition.execute(JavaStaticHookDefinition.java:49)
+	at io.cucumber.core.runner.Runner.executeHook(Runner.java:112)
+	at io.cucumber.core.runner.Runner.lambda$executeHooks$2(Runner.java:99)
+	at io.cucumber.core.runner.ThrowableCollector.execute(ThrowableCollector.java:21)
+	at io.cucumber.core.runner.Runner.executeHooks(Runner.java:99)
+	at io.cucumber.core.runner.Runner.runAfterAllHooks(Runner.java:93)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runAfterAllHooks(CucumberExecutionContext.java:99)
+	at io.cucumber.testng.TestNGCucumberRunner.finish(TestNGCucumberRunner.java:143)
+	at io.cucumber.testng.AbstractTestNGCucumberTests.tearDownClass(AbstractTestNGCucumberTests.java:57)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeAfterClassConfigurations(TestMethodWorker.java:229)
+	at org.testng.internal.invokers.TestMethodWorker.invokeAfterClassMethods(TestMethodWorker.java:215)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:131)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+                                                                   </tr>
+                                                            </tbody>
+														</table>
+													</div>
+												</div> 
+											</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='exception-details-wrapper' class='col _addedCell2'>
+						<div class='contents'>
+							<div class='card-panel details-view'>
+								<h5 class='exception-name'></h5>
+								<div class='exception-container'>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- /exceptions -->
+			
+			<!-- testrunner logs -->
+			<!-- /testrunner logs -->
+			
+		</div>
+		<!-- /container -->
+		
+		<!-- test dashboard counts setting -->
+		<div id='test-count-setting' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Configure Tests Count Setting</h5> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> 
+				<label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> 
+				<label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> 
+				<label for='childNodes'>Child Tests Only</label> 
+			</div> 
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /test dashboard counts setting -->
+		
+		<!-- filter for step status -->
+		<div id='step-status-filter' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Select status</h5> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> 
+				<label for='step-dashboard-filter-pass'>Pass</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> 
+				<label for='step-dashboard-filter-fail'>Fail</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> 
+				<label for='step-dashboard-filter-fatal'>Fatal</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> 
+				<label for='step-dashboard-filter-error'>Error</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> 
+				<label for='step-dashboard-filter-warning'>Warning</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> 
+				<label for='step-dashboard-filter-skip'>Skipped</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> 
+				<label for='step-dashboard-filter-info'>Info</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> 
+				<label for='step-dashboard-filter-unknown'>Unknown</label> 
+			</div>
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /filter for step status -->
+		
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.js' type='text/javascript'></script>
+
+		<script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script>
+		<script>
+				
+            
+                $(document).ready(function() {
+                    
+                });
+            
+        
+		</script>
+	</body>
+</html>

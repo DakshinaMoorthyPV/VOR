@@ -1,0 +1,61 @@
+pipeline {
+    agent any 
+
+    triggers {
+        // For nightly builds at 2 PM IST (which is 8:30 AM UTC)
+        cron('H 30 8 * *')
+    }
+
+    environment {
+        MAVEN_HOME = "${tool name='M3'}"  // Changed 'YOUR_MAVEN_TOOL_NAME' to 'M3' from previous example
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm 
+            }
+        }
+
+        stage('Build and Test') {
+            steps {
+                sh "${MAVEN_HOME}/bin/mvn clean install"  // Changed from 'clean test' to 'clean install'
+            }
+        }
+    }
+
+    post {
+        always {
+            def recipients = 'dakshina.moorthy@visionetsystem.com, bhuvaneswari.t@visionetsystems.com'
+            def ccRecipients = 'dhruvakumar.r@visionet.com'
+            def firstNames = recipients.split(',').collect { it.split('@')[0] }.join(', ')
+            
+            emailext (
+                to: recipients,
+                cc: ccRecipients,
+                subject: "Jenkins Build: ${currentBuild.fullDisplayName}",
+                body: """\
+                    Hello ${firstNames},
+
+                    Here are the details of the Jenkins build:
+                    Build: ${currentBuild.fullDisplayName}
+                    Status: ${currentBuild.result}
+                    Console Log: ${Jenkins.URL}${currentBuild.url}console
+                """,
+                mimeType: 'text/plain'
+            )
+            
+            // Send Slack Notification
+            slackSend (
+                color: currentBuild.result == 'SUCCESS' ? 'good' : 'danger',
+                message: "Build: ${currentBuild.fullDisplayName}, Status: ${currentBuild.result}"
+            )
+        }
+        success {
+            echo "The build was successful!"
+        }
+        failure {
+            echo "The build failed!"
+        }
+    }
+}
