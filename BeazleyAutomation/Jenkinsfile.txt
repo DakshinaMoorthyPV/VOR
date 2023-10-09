@@ -19,7 +19,9 @@ pipeline {
 
         stage('Build and Test') {
             steps {
+            dir('BeazleyAutomation') {
                 sh "${MAVEN_HOME}/bin/mvn clean install"  // Changed from 'clean test' to 'clean install'
+            }
             }
         }
     }
