@@ -6,10 +6,11 @@ pipeline {
         cron('30 8 * * *')
         // Poll SCM every 5 minutes as a fallback
         pollSCM('H/5 * * * *')
+
     }
 
     environment {
-        MAVEN_HOME = "${tool name='M3'}"  // Changed 'YOUR_MAVEN_TOOL_NAME' to 'M3' from previous example
+        MAVEN_HOME = "${tool name='M3'}"
     }
 
     stages {
