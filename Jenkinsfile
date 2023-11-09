@@ -2,12 +2,13 @@ pipeline {
     agent any 
 
     triggers {
-        // For nightly builds at 2 PM IST (which is 8:30 AM UTC)
-        cron('H 30 8 * *')
+        cron('H 30 8 * *') // For nightly builds at 2 PM IST (which is 8:30 AM UTC)
+        // Add this line to trigger builds on Git push events
+        pollSCM('H/5 * * * *') // Poll every 5 minutes as a fallback
     }
 
     environment {
-        MAVEN_HOME = "${tool name='M3'}"  // Changed 'YOUR_MAVEN_TOOL_NAME' to 'M3' from previous example
+        MAVEN_HOME = "${tool name='M3'}"
     }
 
     stages {
