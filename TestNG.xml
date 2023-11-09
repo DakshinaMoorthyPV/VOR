@@ -7,8 +7,7 @@
 <!-- Test Case 1. Seller MAKER Create Import LC with dependencies -->
 
  <test name="Test01" enabled="true">
-
-  <classes>
+   <classes>
 
     <class name="org.testRunner.TestRunner"/>
 
