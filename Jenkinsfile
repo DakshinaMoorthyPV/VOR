@@ -6,7 +6,6 @@ pipeline {
         cron('30 8 * * *')
         // Poll SCM every 5 minutes as a fallback
         pollSCM('H/5 * * * *')
-
     }
 
     environment {
