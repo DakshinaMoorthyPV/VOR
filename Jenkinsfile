@@ -1,9 +1,11 @@
 pipeline {
     agent any 
 
-    triggers {
-        // For nightly builds at 2 PM IST (which is 8:30 AM UTC)
-        cron('H 30 8 * *')
+   triggers {
+        // Corrected cron expression for daily builds at 8:30 AM UTC
+        cron('30 8 * * *')
+        // Poll SCM every 5 minutes as a fallback
+        pollSCM('H/5 * * * *')
     }
 
     environment {
