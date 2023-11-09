@@ -11,14 +11,13 @@ pipeline {
     }
 
     stages {
-       stages {
         stage('Checkout') {
             steps {
                 checkout([
                     $class: 'GitSCM', 
                     branches: [[name: '*/master']],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/YourUsername/YourRepo.git',
+                        url: 'https://github.com/DakshinaMoorthyPV/VOR.git',
                         credentialsId: 'Dakshina_Git'
                     ]]
                 ])
@@ -27,9 +26,26 @@ pipeline {
 
         stage('Build and Test') {
             steps {
-            dir('BeazleyAutomation') {
-                sh "${MAVEN_HOME}/bin/mvn clean install"  // Changed from 'clean test' to 'clean install'
+                // Using Maven to build and test the Selenium project
+                sh "${MAVEN_HOME}/bin/mvn clean install"
             }
+            post {
+                always {
+                    // Assuming tests generate reports in 'target/surefire-reports'
+                    junit '**/target/surefire-reports/*.xml'
+
+                    // Archive the raw test results
+                    archiveArtifacts artifacts: '**/target/surefire-reports/*', fingerprint: true
+                    
+                    // Publish HTML report if your tests generate an HTML report
+                    publishHTML([
+                        reportDir: 'target/surefire-reports',
+                        reportFiles: 'index.html',
+                        reportName: "HTML Test Report",
+                        keepAll: true,
+                        allowMissing: false
+                    ])
+                }
             }
         }
     }
@@ -60,12 +76,22 @@ pipeline {
                 color: currentBuild.result == 'SUCCESS' ? 'good' : 'danger',
                 message: "Build: ${currentBuild.fullDisplayName}, Status: ${currentBuild.result}"
             )
+            
+            // Copying test report to the project folder
+            script {
+                def reportPath = 'target/surefire-reports'
+                def destinationPath = 'under/test-report/jenkins/report'
+                sh "mkdir -p ${destinationPath}"
+                sh "cp -r ${reportPath}/* ${destinationPath}/"
+            }
         }
         success {
             echo "The build was successful!"
+            // Additional steps for successful builds if required
         }
         failure {
             echo "The build failed!"
+            // Additional steps for failed builds if required
         }
     }
 }
