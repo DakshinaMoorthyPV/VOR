@@ -3,7 +3,7 @@ pipeline {
 
     triggers {
         cron('H 30 8 * *') // For nightly builds at 2 PM IST (which is 8:30 AM UTC)
-        // Add this line to trigger builds on Git push events
+        // Add this line to trigger builds on Git push events.
         pollSCM('H/5 * * * *') // Poll every 5 minutes as a fallback
     }
 
